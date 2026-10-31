@@ -1,0 +1,14 @@
+{# Google Play install button. Needs `app_url` in context (empty => "coming soon"). Optional: `app_label`. #}
+<div class="app-install">
+{% if app_url %}
+  <a class="button button-play" href="{{ app_url }}" target="_blank" rel="noopener noreferrer" data-install>
+    <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.8v18.4c0 .6.7 1 1.2.6L20.6 12 5.2 2.2c-.5-.4-1.2 0-1.2.6z"/></svg>
+    <span class="play-text"><small>{{ app_label|default:"GET THE NUVAIX APP ON" }}</small><b>Google Play</b></span>
+  </a>
+{% else %}
+  <a class="button button-play is-soon" href="{% url 'contact' %}?type=mobile_app&via=email">
+    <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2.8v18.4c0 .6.7 1 1.2.6L20.6 12 5.2 2.2c-.5-.4-1.2 0-1.2.6z"/></svg>
+    <span class="play-text"><small>ANDROID APP</small><b>Coming soon · notify me</b></span>
+  </a>
+{% endif %}
+</div>

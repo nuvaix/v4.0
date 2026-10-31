@@ -1,0 +1,86 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#091a33">
+  <meta name="description" content="{% block meta_description %}NUVAIX GROUP is a diversified enterprise operating across technology, construction, real estate and more.{% endblock %}">
+  <title>{% block title %}{{ company.name }} | Innovate. Build. Deliver. Grow.{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'core/css/site.css' %}">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script defer src="{% static 'core/js/site.js' %}"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="topline"><div class="container topline-inner"><span><i class="status-pulse"></i> NUVAIX SOLUTIONS LTD <i>•</i> RC {{ company.rc }}</span><span class="topline-note">INNOVATE <b>·</b> BUILD <b>·</b> DELIVER <b>·</b> GROW</span></div></div>
+<header class="site-header" data-header>
+  <div class="container nav-wrap">
+    <a class="brand" href="{% url 'home' %}" aria-label="NUVAIX GROUP home">
+      <img class="brand-logo" src="{% static 'core/images/brand/logo/Logo_whs(6).png' %}" alt="NUVAIX GROUP logo">
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav"><span></span><span></span><span></span><b class="sr-only">Toggle navigation</b></button>
+    <nav id="main-nav" class="main-nav" aria-label="Main navigation">
+      <a class="{% if active == 'home' %}active{% endif %}" href="{% url 'home' %}">Home</a>
+      <a class="{% if active == 'about' %}active{% endif %}" href="{% url 'about' %}">About</a>
+      <a class="{% if active == 'businesses' %}active{% endif %}" href="{% url 'businesses' %}">Businesses</a>
+      <a class="{% if active == 'technology' %}active{% endif %}" href="{% url 'technology' %}">Technology</a>
+      <a class="{% if active == 'paint' %}active{% endif %}" href="{% url 'paint' %}">NUVAIX Paint</a>
+      <a class="{% if active == 'projects' %}active{% endif %}" href="{% url 'projects' %}">Projects</a>
+      <a class="{% if active == 'insights' %}active{% endif %}" href="{% url 'insights' %}">Insights</a>
+      <a class="nav-contact" href="{% url 'contact' %}">Let's talk <span>↗</span></a>
+    </nav>
+  </div>
+</header>
+<div class="motion-ticker" aria-label="NUVAIX capabilities">
+  <div class="motion-ticker-track">
+    <span>INNOVATE</span><i>✦</i><span>BUILD</span><i>✦</i><span>DELIVER</span><i>✦</i><span>GROW</span><i>✦</i><span>TECHNOLOGY</span><i>✦</i><span>INFRASTRUCTURE</span><i>✦</i><span>REAL ESTATE</span><i>✦</i><span>INNOVATE</span><i>✦</i><span>BUILD</span><i>✦</i><span>DELIVER</span><i>✦</i><span>GROW</span><i>✦</i><span>TECHNOLOGY</span><i>✦</i><span>INFRASTRUCTURE</span><i>✦</i><span>REAL ESTATE</span><i>✦</i>
+  </div>
+</div>
+
+<div class="page-transition" aria-hidden="true"></div>
+<main id="main">
+{% if messages %}<div class="container messages" aria-live="polite">{% for message in messages %}<div class="message {{ message.tags }}">{{ message }}</div>{% endfor %}</div>{% endif %}
+{% block content %}{% endblock %}
+</main>
+<footer class="site-footer">
+  <div class="container footer-top">
+    <div class="footer-brand"><a class="brand brand-light" href="{% url 'home' %}"><img class="brand-logo" src="{% static 'core/images/brand/logo/Logo_whs(6).png' %}" alt="NUVAIX GROUP logo"></a><p>A diversified group with a shared ambition: to innovate, build, deliver and grow.</p><span class="footer-tagline">INNOVATE • BUILD • DELIVER • GROW</span></div>
+    <div class="footer-links"><strong>Explore</strong><a href="{% url 'about' %}">About us</a><a href="{% url 'businesses' %}">Our businesses</a><a href="{% url 'technology' %}">Technology</a><a href="{% url 'paint' %}">NUVAIX Paint</a></div>
+    <div class="footer-links"><strong>Connect</strong><a href="{% url 'contact' %}">Contact</a><a href="{% url 'careers' %}">Careers</a><a href="{% url 'partnerships' %}">Partnerships</a><a href="{% url 'insights' %}">Insights</a>{% if site.play_store_url %}<a href="{{ site.play_store_url }}" target="_blank" rel="noopener noreferrer">Android app</a>{% endif %}</div>
+    <div class="footer-cta"><span class="eyebrow">HAVE A PROJECT IN MIND?</span><h3>Let's make progress together.</h3><a class="button button-gold" href="{% url 'contact' %}">Start a conversation ↗</a></div>
+  </div>
+  <div class="container footer-bottom"><span>© {% now "Y" %} NUVAIX GROUP. All rights reserved.</span><span>{{ company.legal_name }} · RC {{ company.rc }}</span><div><a href="{% url 'privacy' %}">Privacy</a><a href="{% url 'terms' %}">Terms</a></div></div>
+</footer>
+
+<!-- Floating social media launcher -->
+<div class="social-float" data-social-float>
+  <div class="social-panel" id="social-panel" aria-hidden="true" inert>
+    <div class="social-panel-heading">
+      <span class="social-panel-kicker">STAY CONNECTED</span>
+      <strong>Our Social Media</strong>
+      <p>Ideas, updates and what we're building next.</p>
+    </div>
+    <div class="social-links">
+      <a class="social-link social-tiktok" href="https://tiktok.com/@nuvaixsolutions" target="_blank" rel="noopener noreferrer" aria-label="NUVAIX Solutions on TikTok"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 3h3c.2 2 1.4 3.4 4 3.6v3.2a9 9 0 0 1-4-1.2v6.1a6.1 6.1 0 1 1-6.1-6.1c.4 0 .8 0 1.1.1v3.4a3 3 0 1 0 1.9 2.8V3z"/></svg></span><span>TikTok</span><span class="social-arrow" aria-hidden="true">↗</span></a>
+      <a class="social-link social-github" href="https://github.com/nuvaix" target="_blank" rel="noopener noreferrer" aria-label="NUVAIX on GitHub"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.76-1.32-3.76-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 1.72 2.63 1.22 3.27.93.1-.72.39-1.22.71-1.5-2.48-.28-5.09-1.24-5.09-5.53 0-1.22.44-2.22 1.16-3-.12-.29-.5-1.43.11-2.98 0 0 .95-.3 3.08 1.15a10.7 10.7 0 0 1 5.6 0c2.14-1.45 3.08-1.15 3.08-1.15.61 1.55.23 2.69.12 2.98.72.78 1.15 1.78 1.15 3 0 4.3-2.61 5.24-5.1 5.52.4.35.75 1.03.75 2.08v3.1c0 .3.2.65.77.54A11.2 11.2 0 0 0 12 .8z"/></svg></span><span>GitHub</span><span class="social-arrow" aria-hidden="true">↗</span></a>
+      <a class="social-link social-x" href="https://x.com/OfficialNuvaix" target="_blank" rel="noopener noreferrer" aria-label="NUVAIX on X"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3L12 13.9 4.9 22H1.8l7.3-8.4L1.2 2h6.5l4.4 7.4L18.9 2zm-1.1 17.8h1.7L6.7 4.1H4.9l12.9 15.7z"/></svg></span><span>X</span><span class="social-arrow" aria-hidden="true">↗</span></a>
+      <a class="social-link social-instagram" href="https://instagram.com/nuvaixhq" target="_blank" rel="noopener noreferrer" aria-label="NUVAIX on Instagram"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="17.5" cy="6.7" r="1.3"/></svg></span><span>Instagram</span><span class="social-arrow" aria-hidden="true">↗</span></a>
+      <a class="social-link social-facebook" href="https://facebook.com/profile.php?id=61591267901067" target="_blank" rel="noopener noreferrer" aria-label="NUVAIX GROUP on Facebook"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-3 0-5 2-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.7.3-1 1-1z"/></svg></span><span>Facebook</span><span class="social-arrow" aria-hidden="true">↗</span></a>
+      <a class="social-link social-linkedin" href="https://linkedin.com/company/nuvaixgroup" target="_blank" rel="noopener noreferrer" aria-label="NUVAIX GROUP on LinkedIn"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5.2 3.5a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4zM3.3 9.5h3.8V21H3.3zM9.3 9.5h3.6v1.6h.1a4 4 0 0 1 3.6-2c3.9 0 4.6 2.5 4.6 5.8V21h-3.8v-5.4c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V21H9.3z"/></svg></span><span>LinkedIn</span><span class="social-arrow" aria-hidden="true">↗</span></a>
+      <a class="social-link social-youtube" href="https://youtube.com/@nuvaixsolutions" target="_blank" rel="noopener noreferrer" aria-label="NUVAIX Solutions on YouTube"><span class="social-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6z"/></svg></span><span>YouTube</span><span class="social-arrow" aria-hidden="true">↗</span></a>
+    </div>
+    <div class="social-panel-foot"><span class="social-live-dot"></span> Connect with our world</div>
+  </div>
+  <button class="social-toggle" type="button" aria-expanded="false" aria-controls="social-panel" aria-label="Open social media links">
+    <svg class="social-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.6 6.6-4.2M8.7 13.4l6.6 4.2"/></svg>
+    <span class="social-toggle-label">Follow us</span>
+  </button>
+</div>
+<a class="whatsapp-float" href="https://wa.me/{{ site.wa_number }}?text=Hello%20NUVAIX%20GROUP%2C%20I%27d%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener noreferrer" aria-label="Chat with NUVAIX GROUP on WhatsApp"><span class="wa-icon">◔</span><span class="wa-label">Chat with us</span></a>
+</body>
+</html>

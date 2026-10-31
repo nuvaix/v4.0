@@ -1,0 +1,5 @@
+{% extends "core/base.html" %}
+{% block content %}
+<section class="page-hero"><div class="container"><div class="eyebrow"><span class="eyebrow-line"></span> {{ eyebrow|upper }}</div><h1>{{ title }}</h1><p>{{ description }}</p><div class="page-hero-meta"><span>NUVAIX GROUP</span><span>UPDATES WILL BE SHARED AS APPROVED</span></div></div></section>
+<section class="section-pad"><div class="container empty-state"><div class="empty-icon">N<span>.</span></div><div class="eyebrow"><span class="eyebrow-line"></span> MORE TO COME</div><h2>Good work deserves<br><em>the right story.</em></h2><p>We only publish verified company information. While this section is being prepared, contact our team for current enquiries.</p><a class="button button-dark" href="{% url 'contact' %}">Contact NUVAIX ↗</a></div></section>
+{% endblock %}

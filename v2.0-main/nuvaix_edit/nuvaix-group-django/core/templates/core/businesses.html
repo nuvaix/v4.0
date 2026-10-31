@@ -1,0 +1,5 @@
+{% extends "core/base.html" %}
+{% block content %}
+<section class="page-hero"><div class="container"><div class="eyebrow"><span class="eyebrow-line"></span> OUR BUSINESS ECOSYSTEM</div><h1>Multiple sectors.<br><em>Shared ambition.</em></h1><p>Ten business divisions connected by a forward-looking approach to opportunity and value creation.</p><div class="page-hero-meta"><span>10 DIVISIONS</span><span>ONE GROUP-WIDE VISION</span></div></div></section>
+<section class="section-pad"><div class="container"><div class="directory-intro"><h2>Explore our <em>divisions.</em></h2><p>Choose a business area to learn more about its focus.</p></div><div class="business-grid light-grid">{% for b in businesses %}<a class="business-card reveal" href="{% url 'business_detail' b.slug %}"><div class="card-top"><span>{{ b.number }}</span><span class="card-arrow">↗</span></div><div class="card-symbol">{% cycle "⌂" "◇" "⌘" "◈" "⇄" "▦" "+" "⌁" "◎" "↗" %}</div><h3>{{ b.name }}</h3><p>{{ b.category }}</p><div class="card-bottom"><span>Explore division</span><span>→</span></div></a>{% endfor %}</div></div></section>
+{% endblock %}
